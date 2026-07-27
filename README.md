@@ -73,7 +73,7 @@ Next project will include:
 
 # ⭐ Featured Projects
 
-## ❄️ dbt Snowflake Airbnb Pipeline
+## ❄️ DBT Snowflake Airbnb Pipeline
 
 Modern Analytics Engineering project demonstrating:
 
