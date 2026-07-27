@@ -56,6 +56,21 @@ Currently expanding my skills in:
 
 ---
 
+# 📈 Currently Building
+
+🚧 Currency Exchange Data Pipeline
+
+Next project will include:
+
+- Public API ingestion
+- DuckDB
+- dbt Core
+- GitHub Actions
+- Incremental Models
+- Tableau Dashboard
+
+---
+
 # ⭐ Featured Projects
 
 ## ❄️ dbt Snowflake Airbnb Pipeline
@@ -105,21 +120,6 @@ Projects using:
 - Matplotlib
 - Data Cleaning
 - Exploratory Data Analysis
-
----
-
-# 📈 Currently Building
-
-🚧 Currency Exchange Data Pipeline
-
-Next project will include:
-
-- Public API ingestion
-- DuckDB
-- dbt Core
-- GitHub Actions
-- Incremental Models
-- Tableau Dashboard
 
 ---
 
