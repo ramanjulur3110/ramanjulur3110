@@ -2,7 +2,7 @@
 
 # Hi, I'm Rakesh Ramanjulu 👋
 
-### Data Engineer | Snowflake • dbt • SQL • Python • AWS
+### Data Engineer | Snowflake • DBT • SQL • Python • AWS
 
 Building modern cloud data platforms with a passion for analytics engineering, data modeling, and automation.
 
