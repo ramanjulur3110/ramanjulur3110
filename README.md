@@ -145,7 +145,7 @@ My interests include:
 
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?style=for-the-badge&logo=github)](https://github.com/ramanjulur3110)
 
-[![Resume](https://img.shields.io/badge/📄_Resume-PDF-success?style=for-the-badge)](https://docs.google.com/document/d/1up5eNNu5x_QF9x4XnrfRjSAzYdOUdsUk/edit?usp=sharing&ouid=115745297619057343072&rtpof=true&sd=true)
+[![Resume](https://img.shields.io/badge/📄_Resume-PDF-success?style=for-the-badge)](https://drive.google.com/uc?export=download&id=1up5eNNu5x_QF9x4XnrfRjSAzYdOUdsUk)
 
 ---
 
