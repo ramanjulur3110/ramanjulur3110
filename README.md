@@ -44,4 +44,4 @@ Data analysis and visualization projects built with Pandas, NumPy, and Matplotli
 ## 🌐 Connect With Me
 
 - 💼 LinkedIn: [https://linkedin.com/in/your-link](https://www.linkedin.com/in/rakesh-ramanjulu-81ab7858/)
-- 📧 Email: your@email.com
+- 📧 Email: rraman3110@gmail.com
