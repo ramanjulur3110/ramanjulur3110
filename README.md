@@ -17,7 +17,7 @@ Data Engineer passionate about building scalable cloud data platforms using mode
 
 ## 📌 Featured Projects
 
-### ❄️ dbt Snowflake Airbnb Pipeline
+### ❄️ DBT Snowflake Airbnb Pipeline
 Modern ELT pipeline built with Amazon S3, Snowflake, dbt Core, and GitHub Actions.
 
 ### 🏛️ SQL Data Warehouse
