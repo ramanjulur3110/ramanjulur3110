@@ -1,158 +1,208 @@
-<div align="center">
-
 # Hi, I'm Rakesh Ramanjulu 👋
 
-### Data Engineer | Snowflake • DBT • SQL • Python • AWS
+### Data Engineer | Python • SQL • dbt • Airflow • Docker • Snowflake
 
-Building modern cloud data platforms with a passion for analytics engineering, data modeling, and automation.
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/rakesh-ramanjulu-81ab7858/)
-[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?style=for-the-badge&logo=github)](https://github.com/ramanjulur3110)
-
-</div>
+Building reliable, production-inspired data platforms with a focus on data engineering, analytics engineering, automation, and maintainable pipeline architecture.
 
 ---
 
-# 👨‍💻 About Me
+## 👨‍💻 About Me
 
-I'm a Data Engineer focused on designing scalable, production-inspired data platforms using modern cloud technologies.
+I'm a Data Engineer focused on designing and building end-to-end data pipelines that transform raw data into reliable, analytics-ready datasets.
 
-I enjoy building complete ELT pipelines—from ingestion to analytics-ready data models—while applying software engineering best practices including CI/CD, testing, documentation, and automation.
+My projects emphasize the full data engineering lifecycle—from ingestion and orchestration to transformation, dimensional modeling, data quality, testing, and delivery.
 
-Currently expanding my skills in:
+I enjoy working at the intersection of data engineering and software engineering, with an emphasis on building systems that are:
 
-- Apache Airflow
-- Docker
-- Data Observability
-- Advanced dbt
-- Cloud Data Engineering
+* Reliable and maintainable
+* Automated and observable
+* Tested and documented
+* Containerized and reproducible
+* Designed around real-world engineering patterns
+
+My background in technical support and operations also influences how I approach data engineering: troubleshoot systematically, automate repetitive processes, design for failure, and make systems easier to operate.
 
 ---
 
-# 🚀 Tech Stack
+## 🚀 Tech Stack
 
-### Languages
+### Languages & Querying
 
-![SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+* Python
+* SQL
 
-### Data Engineering
+### Data Engineering & Analytics
 
-![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)
-![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white)
-![AWS S3](https://img.shields.io/badge/AWS_S3-569A31?style=for-the-badge&logo=amazonaws&logoColor=white)
-![DuckDB](https://img.shields.io/badge/DuckDB-FFF000?style=for-the-badge&logo=duckdb&logoColor=black)
+* dbt Core
+* Apache Airflow
+* Apache Spark / PySpark
+* Pandas
+* DuckDB
+* MotherDuck
+* ETL / ELT
+* Dimensional Modeling
+* Data Warehousing
+* Data Quality & Testing
 
-### Development
+### Databases & Cloud
 
-![Git](https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+* Snowflake
+* PostgreSQL
+* SQL Server
+* AWS
+
+### Development & DevOps
+
+* Docker
+* Docker Compose
+* Git
+* GitHub
+* GitHub Actions
+* CI/CD
+* REST APIs
 
 ### Visualization
 
-![Tableau](https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white)
-![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+* Tableau
+* Matplotlib
 
 ---
 
-# 📈 Currently Building
+## ⭐ Featured Projects
 
-🚧 Currency Exchange Data Pipeline
+### 💱 Currency Exchange Rates Data Engineering Pipeline
 
-Next project will include:
+End-to-end data engineering platform designed to simulate a production-style batch data pipeline.
 
-- Public API ingestion
-- DuckDB
-- dbt Core
-- GitHub Actions
-- Incremental Models
-- Tableau Dashboard
+**Architecture**
 
----
+`REST API → Python Ingestion → DuckDB / MotherDuck → dbt → Analytics Layer → Tableau`
 
-# ⭐ Featured Projects
+**Engineering Highlights**
 
-## ❄️ DBT Snowflake Airbnb Pipeline
+* Built a Python ingestion framework supporting full, incremental, and backfill processing
+* Orchestrated pipeline execution with Apache Airflow
+* Containerized pipeline components using Docker and Docker Compose
+* Implemented dbt staging, dimensional, fact, and presentation models
+* Designed dimensional models with fact and dimension tables
+* Added automated dbt data quality tests and relationship validation
+* Implemented dbt snapshots for historical dimension tracking
+* Created curated analytics views for downstream BI consumption
+* Integrated pipeline success and failure notifications with Slack
+* Added structured logging, audit information, and error handling
+* Built Tableau reporting from the curated presentation layer
+* Designed the project for portable, reproducible execution
 
-Modern Analytics Engineering project demonstrating:
-
-- End-to-End ELT Pipeline
-- Snowflake Data Warehouse
-- dbt Core
-- Data Modeling
-- dbt Snapshots (SCD Type 2)
-- Automated Data Quality Testing
-- GitHub Actions CI/CD
+**Technologies:** Python • SQL • Apache Airflow • Docker • dbt • DuckDB • MotherDuck • Tableau • Git
 
 ---
 
-## 🏛️ SQL Data Warehouse
+### ❄️ dbt Snowflake Airbnb Pipeline
 
-End-to-end SQL Server Data Warehouse built using:
+Analytics engineering project demonstrating modern ELT development using Snowflake and dbt.
 
-- Medallion Architecture
-- Star Schema
-- ETL Pipelines
-- Fact & Dimension Modeling
-- Stored Procedures
+**Engineering Highlights**
 
----
+* Built an end-to-end ELT workflow on Snowflake
+* Developed staging and analytics models with dbt
+* Implemented dimensional data modeling
+* Used dbt snapshots for SCD Type 2 historical tracking
+* Added automated data quality testing
+* Created reusable dbt macros and documentation
+* Implemented CI/CD workflows using GitHub Actions
 
-## 🧮 SQL Data Engineering
-
-Collection of SQL projects covering:
-
-- Window Functions
-- CTEs
-- Query Optimization
-- Data Cleaning
-- Business Analytics
+**Technologies:** Snowflake • dbt • SQL • GitHub Actions • CI/CD
 
 ---
 
-## 🐍 Python Data Analytics
+### 🏛️ SQL Server Data Warehouse
 
-Projects using:
+End-to-end relational data warehouse demonstrating traditional data engineering and dimensional modeling concepts.
 
-- Pandas
-- NumPy
-- Matplotlib
-- Data Cleaning
-- Exploratory Data Analysis
+**Engineering Highlights**
 
----
+* Designed a multi-layer data warehouse architecture
+* Built ETL pipelines for data ingestion and transformation
+* Implemented fact and dimension models
+* Designed star-schema analytical structures
+* Developed stored procedures for transformation workflows
+* Applied data cleaning and validation logic
 
-# 🎯 Career Goals
-
-I'm seeking opportunities where I can contribute to modern data platforms while continuing to grow as a Data Engineer.
-
-My interests include:
-
-- Analytics Engineering
-- Data Warehousing
-- Cloud Data Platforms
-- Data Modeling
-- Workflow Automation
-- Data Quality
-- ELT Pipelines
+**Technologies:** SQL Server • T-SQL • ETL • Dimensional Modeling • Star Schema
 
 ---
 
-# 📫 Connect With Me
+### 🧮 SQL Data Engineering
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](YOUR_LINKEDIN)
+Collection of SQL projects demonstrating practical querying, transformation, and analytical techniques.
 
-[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?style=for-the-badge&logo=github)](https://github.com/ramanjulur3110)
+Topics include:
 
-[![Resume](https://img.shields.io/badge/📄_Resume-PDF-success?style=for-the-badge)]([https://drive.google.com/uc?export=download&id=1up5eNNu5x_QF9x4XnrfRjSAzYdOUdsUk](https://docs.google.com/document/d/1aCEuIUP-a2-9b0zzT0jcenNQW0gfyGCS/edit?usp=sharing&ouid=115745297619057343072&rtpof=true&sd=true))
+* Window Functions
+* Common Table Expressions
+* Joins and Aggregations
+* Data Cleaning
+* Query Optimization
+* Analytical SQL
+* Business Reporting
 
 ---
 
-<div align="center">
+### 🐍 Python Data Analytics
+
+Python projects focused on data processing, exploration, and analysis.
+
+Topics include:
+
+* Pandas
+* NumPy
+* Matplotlib
+* Data Cleaning
+* Exploratory Data Analysis
+* Data Transformation
+* File Processing
+
+---
+
+## 🛠️ What I'm Working On
+
+I'm continuing to strengthen my data engineering skills by experimenting with production-style architectures and data systems.
+
+Current areas of exploration include:
+
+* PostgreSQL transactional workloads
+* Synthetic data generation
+* OLTP-to-analytics architectures
+* Pipeline performance and optimization
+* Apache Spark / PySpark
+* Cloud data engineering patterns
+
+---
+
+## 🎯 Career Focus
+
+I'm seeking Data Engineering opportunities where I can contribute to building reliable data platforms while continuing to deepen my experience with production-scale systems.
+
+I'm particularly interested in:
+
+* Data Engineering
+* Analytics Engineering
+* Data Warehousing
+* Data Platform Engineering
+* Workflow Orchestration
+* Data Modeling
+* Data Quality & Observability
+* Cloud Data Platforms
+* ETL / ELT Architecture
+
+---
+
+## 📫 Connect With Me
+
+Feel free to connect with me on LinkedIn or explore my repositories to see the projects I'm building.
+
+---
 
 ### Thanks for visiting! ⭐
 
-If you're a recruiter or hiring manager, feel free to connect with me on LinkedIn.
-
-</div>
+I'm always interested in learning, solving challenging data problems, and building better data systems.
