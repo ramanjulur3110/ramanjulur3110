@@ -19,174 +19,150 @@ My background in **production support and operations** influences how I approach
 
 ### 🔨 Currently Building
 
-**E-Commerce Data Platform — Phase 1 Complete ✅**
+**E-Commerce Data Platform --- Phases 1--3 Complete ✅ \| Phase 4 In
+Progress 🚧**
 
-`OLTP → CDC → Kafka → Stream Processing → Lakehouse → Analytics`
+`Source Platform → PostgreSQL → Debezium → Kafka → PySpark → Databricks Bronze → dbt → Silver → Gold`
 
-I'm currently evolving a continuously running e-commerce source system into an end-to-end streaming data platform.
+The operational platform, CDC/event-streaming pipeline, and Databricks
+Bronze ingestion layer are running. Current development is focused on
+**dbt transformations for the Silver layer**, followed by Gold
+analytical models.
 
----
+------------------------------------------------------------------------
 
 ## 👨‍💻 About Me
 
-I'm a Data Engineer with a background in **production support and operations**.
+I'm a Data Engineer with a background in **production support and
+operations**.
 
-That experience shaped how I think about engineering. A successful pipeline isn't just one that moves data—it should also be possible to understand what happened when something goes wrong.
+That experience shaped how I think about engineering. A successful
+pipeline isn't just one that moves data---it should also be possible to
+understand what happened when something goes wrong.
 
 I design projects around:
 
-* 🔍 **Observability** — Can I determine what happened?
-* 🧾 **Auditability** — Can I reconstruct historical behavior?
-* 🔄 **Recoverability** — Can processing safely retry or restart?
-* 🕒 **History** — Is enough state preserved to investigate problems?
-* 🧪 **Data Quality** — Can incorrect data be detected before it propagates?
-* 📦 **Reproducibility** — Can the environment be rebuilt consistently?
-* ⚙️ **Automation** — Can repetitive operational work be eliminated?
+-   🔍 **Observability** --- Can I determine what happened?
+-   🧾 **Auditability** --- Can I reconstruct historical behavior?
+-   🔄 **Recoverability** --- Can processing safely retry or restart?
+-   🕒 **History** --- Is enough state preserved to investigate
+    problems?
+-   🧪 **Data Quality** --- Can incorrect data be detected before it
+    propagates?
+-   📦 **Reproducibility** --- Can the environment be rebuilt
+    consistently?
+-   ⚙️ **Automation** --- Can repetitive operational work be eliminated?
 
-Rather than building isolated demos, I increasingly focus on **production-inspired systems that generate, move, transform, model, monitor, and serve data.**
+Rather than building isolated demos, I increasingly focus on
+**production-inspired systems that generate, move, transform, model,
+monitor, and serve data.**
 
----
+------------------------------------------------------------------------
 
 # 🏗️ Engineering Projects
 
 ## 🛒 E-Commerce Data Platform
 
-### Phase 1 — OLTP Source System ✅
+> **Current flagship project --- building and operating an end-to-end,
+> production-inspired data platform from the source system forward.**
 
-**Python • PostgreSQL • Docker • SQL**
+Rather than starting with a prepared dataset, I built the operational
+system that creates the data.
 
-> **Current flagship project — building an end-to-end data platform from the source system forward.**
+The project runs as a continuously operating e-commerce platform with
+independent Python services handling orders, payments, inventory,
+fulfillment, shipping, and refunds. The platform is containerized with
+Docker, deployed with Kubernetes, dynamically scales processing
+workloads, and uses Slack for operational monitoring and alerts.
 
-Rather than beginning with a prepared dataset, I built the operational system that creates the data.
-
-Phase 1 is a continuously running, containerized **e-commerce OLTP platform** consisting of independent Python services for transaction generation and payment processing backed by PostgreSQL.
-
-The system produces evolving transactional data with realistic state transitions, payment outcomes, retry behavior, and historical records that will become the source for future CDC, streaming, and lakehouse pipelines.
+Changes in PostgreSQL are captured from the WAL using Debezium, streamed
+through Apache Kafka, processed by a Python/PySpark consumer, and
+written into the Databricks Lakehouse.
 
 ### Current Architecture
 
-```text
-                   PostgreSQL OLTP
-                         ▲
-                         │
-             ┌───────────┴───────────┐
-             │                       │
-      Order Generator         Payment Processor
-           Python                  Python
-             │                       │
-             └───────────┬───────────┘
-                         │
-                  Docker Compose
+``` text
+E-Commerce Platform
+        │
+        ▼
+   PostgreSQL
+        │
+        ▼
+       WAL
+        │
+        ▼
+    Debezium
+        │
+        ▼
+ Apache Kafka
+        │
+        ▼
+Python / PySpark
+        │
+        ▼
+Databricks Bronze
+        │
+        ▼
+       dbt
+        │
+        ▼
+ Silver → Gold
 ```
 
-The two application services operate independently and connect to PostgreSQL using dedicated **least-privilege service accounts**.
+### Project Roadmap
 
-### Transaction Lifecycle
+**Phase 1:** ✅ E-Commerce Source Platform\
+**Phase 2:** ✅ CDC & Apache Kafka Streaming\
+**Phase 3:** ✅ PySpark / Databricks Bronze\
+**Phase 4:** 🚧 dbt / Silver & Gold\
+**Phase 5:** ⏳ Public Data API\
+**Phase 6:** ⏳ Apache Airflow\
+**Phase 7:** ⏳ Power BI / Cloud Deployment
 
-```text
-Order Created
-     │
-     ▼
-   PENDING
-     │
-     ▼
-Payment INITIATED
-     │
-     ▼
-  PROCESSING
-     │
-     ├──── APPROVED ────► PAID
-     │
-     ├──── DECLINED ────► FAILED
-     │
-     └──── TIMEOUT ─────► RETRY
-```
+### Technologies
 
-Order and payment state changes are retained historically, allowing transaction behavior to be reconstructed and analyzed over time.
+**Python • PostgreSQL • SQL • Docker • Kubernetes • Debezium • Apache
+Kafka • PySpark • Databricks • Delta Lake • dbt • Slack**
 
-### Engineering Highlights
+The goal is to understand the entire lifecycle of data --- from the
+application that creates it, through CDC and streaming, into the
+lakehouse, and eventually to the systems that consume it.
 
-* Built independent **order-generation and payment-processing services**
-* Designed a relational PostgreSQL OLTP model across transactional, historical, and reference tables
-* Implemented realistic order and payment state progression
-* Added payment approval, decline, timeout, and retry behavior
-* Preserved complete order and payment state history
-* Implemented shipping-class and state-based sales-tax calculations
-* Created weighted distributions for products and payment methods
-* Implemented transactional database operations across related tables
-* Added graceful shutdown behavior for continuously running services
-* Containerized the complete environment using **Docker Compose**
-* Created dedicated PostgreSQL service accounts with **least-privilege permissions**
-* Externalized credentials and runtime configuration through environment variables
-* Created reproducible DDL and static-data deployment scripts
-* Added operational SQL for transaction counts and progression validation
-* Validated complete schema destruction and reconstruction from source-controlled scripts
-* Deployed the platform as a continuously running NAS workload
+**[→ Explore the E-Commerce Data
+Platform](https://github.com/ramanjulur3110/e-Commerce-Data-Platform)**
 
-### Platform Roadmap
-
-```text
-PHASE 1                 PHASE 2
-OLTP                     CDC / Streaming
-  │                            │
-  ▼                            ▼
-PostgreSQL ─────────────► Debezium
-                               │
-                               ▼
-                             Kafka
-                               │
-                               ▼
-                           PHASE 3
-                    Processing / Lakehouse
-                               │
-                               ▼
-                        Spark / PySpark
-                               │
-                               ▼
-                          Databricks
-                               │
-                               ▼
-                           PHASE 4
-                  Analytics / Observability
-```
-
-**Phase 1:** ✅ Python • PostgreSQL • Docker
-**Phase 2:** 🔜 Debezium • Apache Kafka
-**Phase 3:** ⏳ Spark / PySpark • Databricks
-**Phase 4:** ⏳ Analytics • Data Quality • Observability
-
-The goal is to build the downstream data platform around a source system whose behavior I fully understand because I designed and built it.
-
-**[→ Explore the E-Commerce Data Platform](YOUR_REPOSITORY_URL)**
-
----
+## **More building. More breaking. More learning. More coffee. ☕**
 
 ## 💱 Currency Exchange Data Platform
 
 ### `REST API → Python → Airflow → MotherDuck → dbt → Analytics → Tableau`
 
-A complete batch-oriented data platform built to explore how scheduled pipelines behave **operationally**, not simply how data moves from A to B.
+A complete batch-oriented data platform built to explore how scheduled
+pipelines behave **operationally**, not simply how data moves from A to
+B.
 
 ### Engineering Highlights
 
-* Built a Python ingestion framework supporting **full, scheduled, and backfill processing**
-* Orchestrated scheduled execution and retries with **Apache Airflow**
-* Containerized pipeline components with **Docker Compose**
-* Built staging, dimensional, fact, and presentation layers using **dbt**
-* Implemented dimensional data modeling
-* Added automated data-quality and relationship testing
-* Implemented dbt snapshots for historical dimension tracking
-* Created curated analytics views for downstream consumption
-* Added pipeline auditing and structured logging
-* Integrated success, warning, and failure notifications
-* Designed graceful handling for expected no-data scenarios
-* Added operational monitoring around pipeline runtime
-* Built a Tableau reporting layer
-* Designed the project for reproducible deployment
+-   Built a Python ingestion framework supporting **full, scheduled, and
+    backfill processing**
+-   Orchestrated scheduled execution and retries with **Apache Airflow**
+-   Containerized pipeline components with **Docker Compose**
+-   Built staging, dimensional, fact, and presentation layers using
+    **dbt**
+-   Implemented dimensional data modeling
+-   Added automated data-quality and relationship testing
+-   Implemented dbt snapshots for historical dimension tracking
+-   Created curated analytics views for downstream consumption
+-   Added pipeline auditing and structured logging
+-   Integrated success, warning, and failure notifications
+-   Designed graceful handling for expected no-data scenarios
+-   Added operational monitoring around pipeline runtime
+-   Built a Tableau reporting layer
+-   Designed the project for reproducible deployment
 
 ### Architecture
 
-```text
+``` text
 Frankfurter API
       │
       ▼
@@ -212,73 +188,101 @@ Apache Airflow
 Orchestration + Monitoring
 ```
 
-**Technologies:** Python • SQL • Apache Airflow • Docker • dbt • DuckDB • MotherDuck • Tableau • Git
+**Technologies:** Python • SQL • Apache Airflow • Docker • dbt • DuckDB
+• MotherDuck • Tableau • Git
 
-**[→ Explore the Currency Exchange Data Platform](YOUR_REPOSITORY_URL)**
+**[→ Explore the Currency Exchange Data
+Platform](https://github.com/ramanjulur3110/End_to_End_Currency_Exchange_Rate_ELT_Pipeline)**
 
----
+------------------------------------------------------------------------
 
 ## ❄️ Snowflake + dbt Analytics Engineering
 
-A modern ELT project demonstrating analytics-engineering patterns using Snowflake and dbt.
+A modern ELT project demonstrating analytics-engineering patterns using
+Snowflake and dbt.
 
 ### Engineering Highlights
 
-* Built an end-to-end ELT workflow on Snowflake
-* Developed modular staging and analytics models
-* Implemented dimensional data modeling
-* Used dbt snapshots for **SCD Type 2 history**
-* Added automated data-quality testing
-* Created reusable dbt macros
-* Generated project documentation
-* Implemented CI/CD workflows using GitHub Actions
+-   Built an end-to-end ELT workflow on Snowflake
+-   Developed modular staging and analytics models
+-   Implemented dimensional data modeling
+-   Used dbt snapshots for **SCD Type 2 history**
+-   Added automated data-quality testing
+-   Created reusable dbt macros
+-   Generated project documentation
+-   Implemented CI/CD workflows using GitHub Actions
 
 **Technologies:** Snowflake • dbt • SQL • GitHub Actions • CI/CD
 
-**[→ Explore the Snowflake + dbt Project](YOUR_REPOSITORY_URL)**
+**[→ Explore the Snowflake + dbt
+Project](https://github.com/ramanjulur3110/dbt-snowflake-airbnb-pipeline)**
 
----
+------------------------------------------------------------------------
 
 ## 🏛️ SQL Server Data Warehouse
 
-A traditional relational data warehouse demonstrating foundational warehousing and ETL architecture.
+A traditional relational data warehouse demonstrating foundational
+warehousing and ETL architecture.
 
 ### Engineering Highlights
 
-* Designed a multi-layer warehouse architecture
-* Built ETL ingestion and transformation workflows
-* Implemented fact and dimension models
-* Designed star-schema analytical structures
-* Developed stored procedures for transformation workflows
-* Applied data-cleaning and validation logic
+-   Designed a multi-layer warehouse architecture
+-   Built ETL ingestion and transformation workflows
+-   Implemented fact and dimension models
+-   Designed star-schema analytical structures
+-   Developed stored procedures for transformation workflows
+-   Applied data-cleaning and validation logic
 
-**Technologies:** SQL Server • T-SQL • ETL • Dimensional Modeling • Star Schema
+**Technologies:** SQL Server • T-SQL • ETL • Dimensional Modeling • Star
+Schema
 
-**[→ Explore the SQL Server Data Warehouse](YOUR_REPOSITORY_URL)**
+**[→ Explore the SQL Server Data
+Warehouse](https://github.com/ramanjulur3110/SQL_Data_Warehouse_Project)**
 
----
+------------------------------------------------------------------------
 
 # 🧰 Engineering Toolkit
 
-| Area                          | Technologies                                 |
-| ----------------------------- | -------------------------------------------- |
-| **Languages**                 | Python • SQL                                 |
-| **Databases / Warehouses**    | PostgreSQL • Snowflake • SQL Server • DuckDB |
-| **Transformation**            | dbt Core • Pandas • PySpark                  |
-| **Orchestration**             | Apache Airflow                               |
-| **Data Processing**           | Apache Spark                                 |
-| **Containers**                | Docker • Docker Compose                      |
-| **Cloud / Platforms**         | AWS • MotherDuck                             |
-| **DevOps**                    | Git • GitHub • GitHub Actions • CI/CD        |
-| **Analytics**                 | Tableau • Matplotlib                         |
-| **Integration**               | REST APIs                                    |
-| **Currently Building Toward** | Kafka • Debezium • Databricks                |
+  -----------------------------------------------------------------------
+  Area                                Technologies
+  ----------------------------------- -----------------------------------
+  **Languages**                       Python • SQL
 
----
+  **Databases / Warehouses**          PostgreSQL • Snowflake • SQL Server
+                                      • DuckDB
+
+  **CDC / Streaming**                 Debezium • Apache Kafka •
+                                      PostgreSQL Logical Replication
+
+  **Transformation**                  dbt Core • Pandas • PySpark
+
+  **Orchestration**                   Apache Airflow
+
+  **Data Processing / Lakehouse**     Apache Spark • Databricks • Delta
+                                      Lake
+
+  **Containers / Infrastructure**     Docker • Docker Compose •
+                                      Kubernetes
+
+  **Cloud / Platforms**               AWS • MotherDuck • Databricks
+
+  **DevOps / Operations**             Git • GitHub • GitHub Actions •
+                                      CI/CD • Slack
+
+  **Analytics**                       Tableau • Matplotlib
+
+  **Integration**                     REST APIs
+
+  **Currently Building Toward**       Silver / Gold Models • Public API •
+                                      Power BI
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 # 🧠 Engineering Philosophy
 
-I build projects around questions engineers encounter when systems actually have to operate:
+I build projects around questions engineers encounter when systems
+actually have to operate:
 
 > **What happens when the source is unavailable?**
 
@@ -294,15 +298,17 @@ I build projects around questions engineers encounter when systems actually have
 
 > **When does batch processing stop being the right architecture?**
 
-These questions drive my projects more than simply adding another technology to the stack.
+These questions drive my projects more than simply adding another
+technology to the stack.
 
----
+------------------------------------------------------------------------
 
 # 🎯 What I'm Building Toward
 
-My goal is to continue progressing beyond individual ETL pipelines toward designing and operating **complete data platforms**.
+My goal is to continue progressing beyond individual ETL pipelines
+toward designing and operating **complete data platforms**.
 
-```text
+``` text
 Source Systems
       ↓
 Data Generation
@@ -322,32 +328,43 @@ Quality & Observability
 Analytics
 ```
 
-I want to understand the complete lifecycle of data—from the operational system where a transaction originates to the analytical platform where that information becomes useful.
+I want to understand the complete lifecycle of data---from the
+operational system where a transaction originates to the analytical
+platform where that information becomes useful.
 
-**The technology matters. Understanding how the pieces behave together matters more.**
+**The technology matters. Understanding how the pieces behave together
+matters more.**
 
----
+------------------------------------------------------------------------
 
 # 📚 Additional Projects
 
-My repositories also include smaller projects covering foundational SQL and Python engineering.
+My repositories also include smaller projects covering foundational SQL
+and Python engineering.
 
-**SQL:** Window functions • CTEs • Query optimization • Data cleaning • Analytical SQL
+**SQL:** Window functions • CTEs • Query optimization • Data cleaning •
+Analytical SQL
 
-**Python:** Pandas • NumPy • File processing • Data transformation • Exploratory analysis • Automation
+**Python:** Pandas • NumPy • File processing • Data transformation •
+Exploratory analysis • Automation
 
-These projects represent the foundations that eventually evolved into the larger engineering platforms above.
+These projects represent the foundations that eventually evolved into
+the larger engineering platforms above.
 
----
+------------------------------------------------------------------------
 
 ## 📫 Connect
 
-I'm always interested in discussing **data engineering, Python, SQL, pipeline architecture, and the operational challenges behind reliable data systems.**
+I'm always interested in discussing **data engineering, Python, SQL,
+pipeline architecture, and the operational challenges behind reliable
+data systems.**
 
-**[LinkedIn](YOUR_LINKEDIN_URL)** • **[GitHub Projects](YOUR_GITHUB_URL)**
+**LinkedIn:** Rakesh Ramanjulu • **[GitHub
+Projects](https://github.com/ramanjulur3110)**
 
----
+------------------------------------------------------------------------
 
 ### Thanks for stopping by 👋
 
-**Build it. Break it. Understand why it broke. Make the next version better.**
+**Build it. Break it. Understand why it broke. Make the next version
+better.**
