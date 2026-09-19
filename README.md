@@ -359,7 +359,7 @@ I'm always interested in discussing **data engineering, Python, SQL,
 pipeline architecture, and the operational challenges behind reliable
 data systems.**
 
-**LinkedIn:** Rakesh Ramanjulu • **[GitHub
+**LinkedIn: [Rakesh Ramanjulu](https://www.linkedin.com/in/rakesh-ramanjulu-81ab7858/)** • **[GitHub
 Projects](https://github.com/ramanjulur3110)**
 
 ------------------------------------------------------------------------
