@@ -12,7 +12,7 @@ My background in **production support and operations** influences how I approach
 
 | Project                                                             | Focus                                      | Stack                               |
 | ------------------------------------------------------------------- | ------------------------------------------ | ----------------------------------- |
-| **[🛒 E-Commerce Data Platform](https://github.com/ramanjulur3110/e-Commerce-Data-Platform)**              | OLTP → CDC → Streaming → Lakehouse         | Python • PostgreSQL • Docker        |
+| **[🛒 E-Commerce Data Platform](https://github.com/ramanjulur3110/e-Commerce-Data-Platform)**              | OLTP → CDC → Streaming → Lakehouse         | Python • PostgreSQL • Kafka • Docker        |
 | **[💱 Currency Exchange Data Platform](https://github.com/ramanjulur3110/End_to_End_Currency_Exchange_Rate_ELT_Pipeline)**       | Batch ingestion, orchestration & analytics | Python • Airflow • dbt • MotherDuck |
 | **[❄️ Snowflake + dbt Analytics Engineering](https://github.com/ramanjulur3110/dbt-snowflake-airbnb-pipeline)** | ELT, dimensional modeling & CI/CD          | Snowflake • dbt • GitHub Actions    |
 | **[🏛️ SQL Server Data Warehouse](https://github.com/ramanjulur3110/SQL_Data_Warehouse_Project)**            | Traditional ETL & dimensional warehousing  | SQL Server • T-SQL                  |
